@@ -1,5 +1,8 @@
-body {
-  padding: 50px;
+#cositasApp{
+  padding-top: 15px;
+}
+#appBar{
+  background-color: #0d6efd;
 }
 p{
   margin: 0px;

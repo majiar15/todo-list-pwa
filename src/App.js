@@ -4,7 +4,7 @@ import { useForm } from './hooks/useForm';
 
 import './App.css';
 import { TodosList } from './components/todoList/TodosList';
-
+import { Navbar } from './components/ui/navbar/Navbar';
 
 
 
@@ -58,6 +58,8 @@ export const App = () => {
 
     return (
         <div>
+            <Navbar/>
+            <div className="container" id="cositasApp">
             <h1>CositasApp ({ todos.length })</h1>
             <hr/>
             <div className="row">
@@ -90,5 +92,6 @@ export const App = () => {
             </div>
             
         </div>
+            </div>
     )
 }
