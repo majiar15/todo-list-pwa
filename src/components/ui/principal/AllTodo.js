@@ -26,7 +26,9 @@ export const AllTodo = () => {
 
 
     return (
-        <div>
+        <div className="container pt-3">
+            <h1> Cositas App ({ todos.length })</h1>
+            <hr/>
             
             <TodosList todos={todos} handleDelete={handleDelete} handleToggle={handleToggle}/>
         </div>

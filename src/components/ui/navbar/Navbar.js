@@ -1,9 +1,10 @@
 import { IconButton, Toolbar, Typography, AppBar,  Drawer, List, ListItemText, ListItemIcon, ListItem ,  makeStyles, Collapse } from '@material-ui/core'
 // import HomeIcon  from '@material-ui/icons/home';
-import {Menu, Work, Person, RadioButtonUnchecked, CalendarToday, ExpandLess, ExpandMore, Home,}  from '@material-ui/icons/';
+import {Menu, Work, Person, RadioButtonUnchecked, CalendarToday, ExpandLess, ExpandMore, Home, List as ListIcon}  from '@material-ui/icons/';
 // import MenuIcon  from '@material-ui/icons/Menu';
 
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { categoryContext } from '../../../context/categoryContext';
 
 const useStyles = makeStyles((theme) => ({
     home: {
@@ -29,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
   
 export const Navbar = () => {
     const clases = useStyles();
+    const CategoryCtx = useContext(categoryContext);
     const [open, setOpen] = useState(false);
     const [home, setHome] = useState(false);
     const [work, setWork] = useState(false);
@@ -37,15 +39,31 @@ export const Navbar = () => {
     const [calendar, setCalendar] = useState(false);
     const handleDrawerOpen = () => {
         setOpen(true);
-      };
-    
-      const handleDrawerClose = () => {
+    };
+    const selectCtegory = (category)=>{
+        CategoryCtx.setCategory(category);
         setOpen(false);
-      };
+        
+        setHome(false);
+        setWork(false);
+        setPerson(false);
+        setExtra(false);
+        setCalendar(false);
+    }
+    const handleDrawerClose = () => {
+        setOpen(false);
+    };
       const drawer = (
         <div>
           
           <List>
+            <ListItem button key="inicio" onClick={()=>selectCtegory("")}>
+                <ListItemIcon >
+                    <ListIcon  className={clases.home}/>          
+                </ListItemIcon>
+                <ListItemText primary="Inicio" />
+                
+            </ListItem>
             <ListItem button key="home" onClick={()=> setHome(!home)}>
                 <ListItemIcon >
                     <Home  className={clases.home}/>          
@@ -55,19 +73,19 @@ export const Navbar = () => {
             </ListItem>
             <Collapse in={home} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                <ListItem button >
+                <ListItem button onClick={()=>selectCtegory("compras")}>
                     <ListItemText primary="Compras" />
                 </ListItem>
 
-                <ListItem button >
+                <ListItem button onClick={()=>selectCtegory("cocina")}>
                     <ListItemText primary="Cocina" />
                 </ListItem>
 
-                <ListItem button >
+                <ListItem button onClick={()=>selectCtegory("lavaderia")}>
                     <ListItemText primary="Lavaderia" />
                 </ListItem>
 
-                <ListItem button >
+                <ListItem button onClick={()=>selectCtegory("limpieza")}>
                     <ListItemText primary="Limpieza" />
                 </ListItem>
 
@@ -85,11 +103,11 @@ export const Navbar = () => {
 
             <Collapse in={work} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                <ListItem button >
+                <ListItem button onClick={()=>selectCtegory("pendientes")}>
                     <ListItemText primary="Pendientes" />
                 </ListItem>
 
-                <ListItem button >
+                <ListItem button onClick={()=>selectCtegory("reuniones")}>
                     <ListItemText primary="Reuniones" />
                 </ListItem>
                 </List>
@@ -106,23 +124,23 @@ export const Navbar = () => {
 
             <Collapse in={person} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                <ListItem button >
+                <ListItem button onClick={()=>selectCtegory("cosas por hacer")}>
                     <ListItemText primary="Cosas por hacer" />
                 </ListItem>
 
-                <ListItem button >
+                <ListItem button onClick={()=>selectCtegory("peliculas")}>
                     <ListItemText primary="Peliculas" />
                 </ListItem>
-                <ListItem button >
+                <ListItem button onClick={()=>selectCtegory("series")}>
                     <ListItemText primary="series" />
                 </ListItem>
-                <ListItem button >
+                <ListItem button onClick={()=>selectCtegory("anime")}>
                     <ListItemText primary="Anime" />
                 </ListItem>
                 </List>
             </Collapse>
 
-            <ListItem button key="extra" onClick={() => setExtra(!extra)}>
+            <ListItem button key="extra" onClick={() => selectCtegory("extra")}>
                 <ListItemIcon>
                     <RadioButtonUnchecked className={clases.extra}/>                   
                 </ListItemIcon>
@@ -141,7 +159,7 @@ export const Navbar = () => {
 
             </ListItem>  
           </List>
-          
+
         </div>
       );
     return (

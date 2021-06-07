@@ -1,27 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 
 import './App.css';
 
 import { Navbar } from './components/ui/navbar/Navbar';
-import { AllTodo } from './components/ui/principal/AllTodo';
-import { Category } from './components/ui/category/Category';
+import { categoryContext } from './context/categoryContext';
+import { SelectCategory } from './components/ui/category/SelectCategory';
 
 
 
 
 export const App = () => {
+    const [category, setCategory] = useState("init");
 
 
+    useEffect(() => {
 
+        
+    }, [category]);
     return (
-        <div>
+        <categoryContext.Provider value={{category, setCategory}}>
             <Navbar/>
-
-            {/* <AllTodo/> */}
-            <Category category="cositas del hogar"/>
+            <SelectCategory categoryProp={category}/>
             
-        </div>
+        </categoryContext.Provider>
     
     )
 }

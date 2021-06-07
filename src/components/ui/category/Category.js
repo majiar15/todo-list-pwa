@@ -13,7 +13,7 @@ export const Category = ({category}) => {
     });
     const CategoryTodo = todos.filter( todo => todo.category === category);
     useEffect(() => {
-        localStorage.setItem('todos', JSON.stringify(CategoryTodo))
+        localStorage.setItem('todos', JSON.stringify(todos))
     }, [CategoryTodo]);
 
     const handleDelete = (todoId) =>{
@@ -70,7 +70,7 @@ export const Category = ({category}) => {
                             className="form-control"
                             value={description}
                             onChange={handleInputChange}
-                            placeholder="Aprender ..."
+                            placeholder="Agregar ..."
                             autoComplete="off"
                         />
                         <div className="d-grid gap-2">
