@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
       color: "#0086BE",
     },
     work: {
-      color: "#DCE2DC"
+      color: "RosyBrown"
     },
     personal: {
       color: "#016F6E"
@@ -22,8 +22,35 @@ const useStyles = makeStyles((theme) => ({
     calendario: {
       color: "#FEB703"
     },
-    nested: {
-      paddingLeft: theme.spacing(4),
+    compras: {
+      color: "orange"
+    },
+    cocina: {
+      color: "pink"
+    },
+    lavaderia: {
+      color: "green"
+    },
+    limpieza: {
+      color: "purple"
+    },
+    pendientes: {
+      color: "DeepSkyBlue"
+    },
+    reuniones: {
+      color: "OrangeRed"
+    },
+    cositasPorHacer: {
+      color: "PaleVioletRed"
+    },
+    peliculas: {
+      color: "DarkKhaki"
+    },
+    series: {
+      color: "DarkGreen"
+    },
+    anime: {
+      color: "DarkSlateBlue"
     },
   }));
 
@@ -35,7 +62,6 @@ export const Navbar = () => {
     const [home, setHome] = useState(false);
     const [work, setWork] = useState(false);
     const [person, setPerson] = useState(false);
-    const [extra, setExtra] = useState(false);
     const [calendar, setCalendar] = useState(false);
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -43,11 +69,9 @@ export const Navbar = () => {
     const selectCtegory = (category)=>{
         CategoryCtx.setCategory(category);
         setOpen(false);
-        
         setHome(false);
         setWork(false);
         setPerson(false);
-        setExtra(false);
         setCalendar(false);
     }
     const handleDrawerClose = () => {
@@ -71,22 +95,24 @@ export const Navbar = () => {
                 <ListItemText primary="Hogar" />
                 {home ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
+
             <Collapse in={home} timeout="auto" unmountOnExit>
+
                 <List component="div" disablePadding>
                 <ListItem button onClick={()=>selectCtegory("compras")}>
-                    <ListItemText primary="Compras" />
+                    <ListItemText primary="Compras" className={clases.compras}/>
                 </ListItem>
 
                 <ListItem button onClick={()=>selectCtegory("cocina")}>
-                    <ListItemText primary="Cocina" />
+                    <ListItemText primary="Cocina" className={clases.cocina}/>
                 </ListItem>
 
                 <ListItem button onClick={()=>selectCtegory("lavaderia")}>
-                    <ListItemText primary="Lavaderia" />
+                    <ListItemText primary="Lavaderia" className={clases.lavaderia}/>
                 </ListItem>
 
                 <ListItem button onClick={()=>selectCtegory("limpieza")}>
-                    <ListItemText primary="Limpieza" />
+                    <ListItemText primary="Limpieza" className={clases.limpieza}/>
                 </ListItem>
 
                 </List>
@@ -104,11 +130,11 @@ export const Navbar = () => {
             <Collapse in={work} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                 <ListItem button onClick={()=>selectCtegory("pendientes")}>
-                    <ListItemText primary="Pendientes" />
+                    <ListItemText primary="Pendientes" className={clases.pendientes} />
                 </ListItem>
 
                 <ListItem button onClick={()=>selectCtegory("reuniones")}>
-                    <ListItemText primary="Reuniones" />
+                    <ListItemText primary="Reuniones" className={clases.reuniones} />
                 </ListItem>
                 </List>
             </Collapse>
@@ -125,17 +151,17 @@ export const Navbar = () => {
             <Collapse in={person} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                 <ListItem button onClick={()=>selectCtegory("cosas por hacer")}>
-                    <ListItemText primary="Cosas por hacer" />
+                    <ListItemText primary="Cosas por hacer" className={clases.cositasPorHacer} />
                 </ListItem>
 
                 <ListItem button onClick={()=>selectCtegory("peliculas")}>
-                    <ListItemText primary="Peliculas" />
+                    <ListItemText primary="Peliculas" className={clases.peliculas} />
                 </ListItem>
                 <ListItem button onClick={()=>selectCtegory("series")}>
-                    <ListItemText primary="series" />
+                    <ListItemText primary="series" className={clases.series} />
                 </ListItem>
                 <ListItem button onClick={()=>selectCtegory("anime")}>
-                    <ListItemText primary="Anime" />
+                    <ListItemText primary="Anime" className={clases.anime} />
                 </ListItem>
                 </List>
             </Collapse>

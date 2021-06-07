@@ -12,9 +12,10 @@ export const Category = ({category}) => {
         description: ''
     });
     const CategoryTodo = todos.filter( todo => todo.category === category);
+    
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos))
-    }, [CategoryTodo]);
+    }, [todos]);
 
     const handleDelete = (todoId) =>{
         const action = {
