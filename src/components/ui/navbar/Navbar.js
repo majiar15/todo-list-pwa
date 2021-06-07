@@ -1,4 +1,4 @@
-import { IconButton, Toolbar, Typography, AppBar,  Drawer, List, ListItemText, ListItemIcon, ListItem ,  makeStyles, Collapse } from '@material-ui/core'
+import { IconButton, Toolbar, Typography, AppBar,  SwipeableDrawer, List, ListItemText, ListItemIcon, ListItem ,  makeStyles, Collapse } from '@material-ui/core'
 // import HomeIcon  from '@material-ui/icons/home';
 import {Menu, Work, Person, RadioButtonUnchecked, CalendarToday, ExpandLess, ExpandMore, Home, List as ListIcon}  from '@material-ui/icons/';
 // import MenuIcon  from '@material-ui/icons/Menu';
@@ -201,13 +201,14 @@ export const Navbar = () => {
             </Toolbar>
         </AppBar>
         
-    <Drawer
+    <SwipeableDrawer
       anchor="left"
       open={open}
       onClose={handleDrawerClose}
+      onOpen={handleDrawerOpen}
     >
      {drawer} 
-    </Drawer>
+    </SwipeableDrawer>
         </>
     )
 }
