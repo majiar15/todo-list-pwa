@@ -8,7 +8,6 @@ import React, { useState } from 'react'
 const useStyles = makeStyles((theme) => ({
     home: {
       color: "#0086BE",
-      
     },
     work: {
       color: "#DCE2DC"
@@ -45,7 +44,7 @@ export const Navbar = () => {
       };
       const drawer = (
         <div>
-          <div  />
+          
           <List>
             <ListItem button key="home" onClick={()=> setHome(!home)}>
                 <ListItemIcon >
@@ -142,6 +141,7 @@ export const Navbar = () => {
 
             </ListItem>  
           </List>
+          
         </div>
       );
     return (
