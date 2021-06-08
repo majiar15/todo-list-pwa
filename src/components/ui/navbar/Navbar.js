@@ -81,7 +81,7 @@ export const Navbar = () => {
         <div>
           
           <List>
-            <ListItem button key="inicio" onClick={()=>selectCtegory("")}>
+            <ListItem button key="inicio" onClick={()=>selectCtegory("init")}>
                 <ListItemIcon >
                     <ListIcon  className={clases.home}/>          
                 </ListItemIcon>
