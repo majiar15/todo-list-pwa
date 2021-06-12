@@ -1,6 +1,7 @@
 import { Category } from '../category/Category'
 import React from 'react'
 import { AllTodo } from '../principal/AllTodo'
+import { Calendar } from '../../calendar/Calendar'
 
 export const SelectCategory = ({categoryProp}) => {
     console.log(categoryProp)
@@ -28,6 +29,8 @@ export const SelectCategory = ({categoryProp}) => {
                 return <Category category="anime"/>
             case "extra":
                 return <Category category="cositas extras"/>
+            case "calendario":
+                return <Calendar />
             default:
                 return <AllTodo/>
         }

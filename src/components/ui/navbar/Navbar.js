@@ -175,7 +175,7 @@ export const Navbar = () => {
 
             </ListItem>  
 
-            <ListItem button key="calendar" onClick={() => setCalendar(!calendar)}>
+            <ListItem button key="calendar" onClick={() => selectCtegory('calendario')}>
                 <ListItemIcon>
                     
                     <CalendarToday className={clases.calendario}/>                   
